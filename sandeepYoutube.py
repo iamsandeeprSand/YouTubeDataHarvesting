@@ -12,7 +12,7 @@ api_key = 'YouTube API KEY'
 youtube = build('youtube', 'v3', developerKey=api_key)
 
 ##Connecting MongoDB 
-conn1=pymongo.MongoClient("Link To Connect MongoDB from Python Environment") # https://cloud.mongodb.com/v2/64338cc513c80f7e8be73db8#/clusters
+conn1=pymongo.MongoClient("Link To Connect MongoDB from Python Environment") 
 db = conn1["Youtube"] #Database is created in MomgoDB
 coll = db["Details"] #Collection to store details
 
@@ -219,7 +219,7 @@ def migrate_to_sql(import_from_mongodb):
 
     conn.commit()
     
-    #to migrate playlist_id details to playlist_id teble:
+    #Tabulating Playlist details
     
     df_playlist_details = pd.DataFrame(columns=["channel_id", "playlist_id"])
     
@@ -234,7 +234,7 @@ def migrate_to_sql(import_from_mongodb):
 
     conn.commit()
     
-    #to migrate video_details details to video teble:
+    #Tabulating video details:
     
     df_video_details = pd.DataFrame(columns=["Video_Id", "playlist_id", "Video_Name", "Video_Description",
                                              "Published_date", "View_Count", "Like_Count",
@@ -354,7 +354,7 @@ def display_output(Entire_channel_details):
 
 #Streamlit Heading or title
                 
-st.markdown("<h1 style='text-align: center; color: blue; font-weight: bold; font-family: Arial;'>Data Harvesting in YouTube Using API</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: red; font-weight: bold; font-family: Arial;'>Data Harvesting in YouTube Using API</h1>", unsafe_allow_html=True)
 st.text("")
 st.text("")
 
@@ -495,11 +495,3 @@ if selected_question:
     st.subheader(selected_question)
     st.dataframe(df)
     conn.commit() 
-    
-
-
-
-
-
-
-
